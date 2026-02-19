@@ -14,6 +14,7 @@ class handler(BaseHTTPRequestHandler):
         dataset   = params.get('dataset', [''])[0]
         data_id   = params.get('data_id', [''])[0]
         start_date = params.get('start_date', ['2022-01-01'])[0]
+        end_date  = params.get('end_date', [''])[0]
 
         if not dataset:
             self._send(400, {'error': 'missing dataset'})
@@ -27,6 +28,8 @@ class handler(BaseHTTPRequestHandler):
         }
         if data_id:
             fm_params['data_id'] = data_id
+        if end_date:
+            fm_params['end_date'] = end_date
         if token:
             fm_params['token'] = token
 
